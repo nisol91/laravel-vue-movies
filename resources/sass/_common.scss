@@ -1,3 +1,9 @@
+.external_cont {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 .main {
     height: auto;
     width: 100%;
@@ -5,7 +11,14 @@
     padding: 100px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 }
+.input.cont {
+    width: 400px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 

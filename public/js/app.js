@@ -1778,8 +1778,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['movie'],
   mounted: function mounted() {
@@ -6246,7 +6244,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card {\n  background: lightblue;\n  margin: 10px;\n  width: 200px;\n}\n.movie_cont {\n  width: 250px;\n  height: 100%;\n}", ""]);
+exports.push([module.i, ".card {\n  background: lightblue;\n  margin: 10px;\n  width: 200px;\n}\n.movie_cont {\n  width: 250px;\n  height: 100%;\n}\n.movie_cont h3 {\n  border-bottom: 0.5px solid grey;\n  margin-bottom: 5px;\n}", ""]);
 
 // exports
 
@@ -37479,19 +37477,15 @@ var render = function() {
   return _c("div", { staticClass: "movie_cont" }, [
     _c("div", { staticClass: "card" }, [
       _c("div", { staticClass: "card-header" }, [
-        _vm._v(
-          "\n                    " +
-            _vm._s(_vm.movie.title) +
-            "\n                "
-        )
+        _vm._v("\n            " + _vm._s(_vm.movie.title) + "\n        ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
-        _vm._v(
-          "\n                    " +
-            _vm._s(_vm.movie.year) +
-            "\n                "
-        )
+        _c("h3", [_vm._v("Anno: " + _vm._s(_vm.movie.year))]),
+        _vm._v(" "),
+        _c("h4", [_vm._v("Riassunto: " + _vm._s(_vm.movie.content))]),
+        _vm._v(" "),
+        _c("img", { attrs: { src: _vm.movie.img, alt: "" } })
       ])
     ])
   ])
@@ -49624,122 +49618,122 @@ var app = new Vue({
     movies: [{
       title: 'A',
       year: '1990',
-      Content: 'abcd',
+      content: 'abcd',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Ab',
+      year: '13990',
+      content: 'abcd',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Adw',
+      year: '1950',
+      content: 'vdg',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Avcc',
+      year: '1997',
+      content: 'gvv',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'A',
+      year: '1990',
+      content: 'abcd',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Ab',
+      year: '13990',
+      content: 'abcd',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Adw',
+      year: '1950',
+      content: 'vdg',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Avcc',
+      year: '1997',
+      content: 'gvv',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'A',
+      year: '1990',
+      content: 'abcd lore',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Ab',
+      year: '13990',
+      content: 'abcd',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Adw',
+      year: '1950',
+      content: 'vdg',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Avcc',
+      year: '1997',
+      content: 'gvv',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'A',
+      year: '1990',
+      content: 'abcd',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Ab',
+      year: '13990',
+      content: 'abcd',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Adw',
+      year: '1950',
+      content: 'vdg',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'Avcc',
+      year: '1997',
+      content: 'gvv',
+      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
+    }, {
+      title: 'A',
+      year: '1990',
+      content: 'abcd',
       img: 'http'
     }, {
       title: 'Ab',
       year: '13990',
-      Content: 'abcd',
+      content: 'Do ut officia enim Lorem do culpa occaecat officia incididunt irure velit id laboris do.',
       img: 'http'
     }, {
       title: 'Adw',
       year: '1950',
-      Content: 'vdg',
+      content: 'vdg',
       img: 'http'
     }, {
       title: 'Avcc',
       year: '1997',
-      Content: 'gvv',
+      content: 'gvv',
       img: 'http'
     }, {
       title: 'A',
       year: '1990',
-      Content: 'abcd',
+      content: 'abcd',
       img: 'http'
     }, {
       title: 'Ab',
       year: '13990',
-      Content: 'abcd',
+      content: 'abcd',
       img: 'http'
     }, {
       title: 'Adw',
       year: '1950',
-      Content: 'vdg',
+      content: 'vdg',
       img: 'http'
     }, {
       title: 'Avcc',
       year: '1997',
-      Content: 'gvv',
-      img: 'http'
-    }, {
-      title: 'A',
-      year: '1990',
-      Content: 'abcd',
-      img: 'http'
-    }, {
-      title: 'Ab',
-      year: '13990',
-      Content: 'abcd',
-      img: 'http'
-    }, {
-      title: 'Adw',
-      year: '1950',
-      Content: 'vdg',
-      img: 'http'
-    }, {
-      title: 'Avcc',
-      year: '1997',
-      Content: 'gvv',
-      img: 'http'
-    }, {
-      title: 'A',
-      year: '1990',
-      Content: 'abcd',
-      img: 'http'
-    }, {
-      title: 'Ab',
-      year: '13990',
-      Content: 'abcd',
-      img: 'http'
-    }, {
-      title: 'Adw',
-      year: '1950',
-      Content: 'vdg',
-      img: 'http'
-    }, {
-      title: 'Avcc',
-      year: '1997',
-      Content: 'gvv',
-      img: 'http'
-    }, {
-      title: 'A',
-      year: '1990',
-      Content: 'abcd',
-      img: 'http'
-    }, {
-      title: 'Ab',
-      year: '13990',
-      Content: 'abcd',
-      img: 'http'
-    }, {
-      title: 'Adw',
-      year: '1950',
-      Content: 'vdg',
-      img: 'http'
-    }, {
-      title: 'Avcc',
-      year: '1997',
-      Content: 'gvv',
-      img: 'http'
-    }, {
-      title: 'A',
-      year: '1990',
-      Content: 'abcd',
-      img: 'http'
-    }, {
-      title: 'Ab',
-      year: '13990',
-      Content: 'abcd',
-      img: 'http'
-    }, {
-      title: 'Adw',
-      year: '1950',
-      Content: 'vdg',
-      img: 'http'
-    }, {
-      title: 'Avcc',
-      year: '1997',
-      Content: 'gvv',
+      content: 'gvv',
       img: 'http'
     }]
   }

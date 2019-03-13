@@ -43,12 +43,12 @@ const app = new Vue({
                 content: this.newContent,
                 image: this.newImg,
             }
-                this.movies.push(newMovie);
+            this.movies.push(newMovie);
 
 
-                this.selectedMovies = [];
-                this.classes = [];
-                alert('movie added')
+            this.selectedMovies = [];
+            this.classes = [];
+            alert('movie added')
 
         },
         searchMovie() {

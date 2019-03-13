@@ -11,10 +11,11 @@ const app = new Vue({
     data: {
         text: 'Tutti i film',
         classes: [],
-        newTitle: '',
-        newYear: '',
-        newContent: '',
-        newImg: '',
+        errors: [],
+        newTitle: null,
+        newYear: null,
+        newContent: null,
+        newImg: null,
         movies: [
             { title: 'Le Iene', year: '1990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
             { title: 'Pulp Fiction', year: '13990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
@@ -36,18 +37,18 @@ const app = new Vue({
             this.text = 'Tutti i film';
         },
         addMovie() {
-            // alert('ok')
             var newMovie = {
                 title: this.newTitle,
                 year: this.newYear,
                 content: this.newContent,
                 image: this.newImg,
             }
-            this.movies.push(newMovie);
+                this.movies.push(newMovie);
 
 
-            this.selectedMovies = [];
-            this.classes = [];
+                this.selectedMovies = [];
+                this.classes = [];
+                alert('movie added')
 
         },
         searchMovie() {
@@ -98,6 +99,28 @@ const app = new Vue({
             this.text = 'Hai cercato: \"' + query + '\"';
 
             this.movieSearch = '';
+        },
+        checkForm: function (e) {
+            if (this.newTitle && this.newYear && this.newContent && this.newImg) {
+                this.addMovie()
+            }
+
+            this.errors = [];
+
+            if (!this.newTitle) {
+                this.errors.push('Title required.');
+            }
+            if (!this.newYear) {
+                this.errors.push('Year required.');
+            }
+            if (!this.newContent) {
+                this.errors.push('Content required.');
+            }
+            if (!this.newImg) {
+                this.errors.push('Image required.');
+            }
+
+            e.preventDefault();
         },
     }
 });

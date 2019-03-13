@@ -49617,10 +49617,11 @@ var app = new Vue({
   data: {
     text: 'Tutti i film',
     classes: [],
-    newTitle: '',
-    newYear: '',
-    newContent: '',
-    newImg: '',
+    errors: [],
+    newTitle: null,
+    newYear: null,
+    newContent: null,
+    newImg: null,
     movies: [{
       title: 'Le Iene',
       year: '1990',
@@ -49663,7 +49664,6 @@ var app = new Vue({
       this.text = 'Tutti i film';
     },
     addMovie: function addMovie() {
-      // alert('ok')
       var newMovie = {
         title: this.newTitle,
         year: this.newYear,
@@ -49673,6 +49673,7 @@ var app = new Vue({
       this.movies.push(newMovie);
       this.selectedMovies = [];
       this.classes = [];
+      alert('movie added');
     },
     searchMovie: function searchMovie() {
       var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // Make a request for a user with a given ID
@@ -49712,6 +49713,31 @@ var app = new Vue({
       console.log(selectedMovies);
       this.text = 'Hai cercato: \"' + query + '\"';
       this.movieSearch = '';
+    },
+    checkForm: function checkForm(e) {
+      if (this.newTitle && this.newYear && this.newContent && this.newImg) {
+        this.addMovie();
+      }
+
+      this.errors = [];
+
+      if (!this.newTitle) {
+        this.errors.push('Title required.');
+      }
+
+      if (!this.newYear) {
+        this.errors.push('Year required.');
+      }
+
+      if (!this.newContent) {
+        this.errors.push('Content required.');
+      }
+
+      if (!this.newImg) {
+        this.errors.push('Image required.');
+      }
+
+      e.preventDefault();
     }
   }
 });

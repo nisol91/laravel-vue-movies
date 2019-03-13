@@ -12,11 +12,23 @@
 <body>
     <div id="app" class="container-fluid external_cont">
         <div class="input_cont has-text-centered">
-            <input class="input" type="text" placeholder="Inserisci titolo" v-model="newTitle">
-            <input class="input" type="text" placeholder="Inserisci anni" v-model="newYear">
-            <input class="input" type="text" placeholder="Inserisci riassunto" v-model="newContent">
-            <input class="input" type="text" placeholder="Inserisci url immagine" v-model="newImg">
-            <button class="button" type="submit" @click="addMovie">Add Movie</button>
+            <form action="" @submit="checkForm">
+                <p v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                    <li v-for="error in errors">@{{ error }}</li>
+                    </ul>
+                </p>
+                <label for="title"></label>
+                <input class="input" name="title" type="text" placeholder="Inserisci titolo" v-model="newTitle">
+                <label for="year"></label>
+                <input class="input" name="year" type="text" placeholder="Inserisci anni" v-model="newYear">
+                <label for="content"></label>
+                <input class="input" name="content" type="text" placeholder="Inserisci riassunto" v-model="newContent">
+                <label for="img"></label>
+                <input class="input" name="img" type="text" placeholder="Inserisci url immagine" v-model="newImg">
+                <button class="button" type="submit" >Add Movie</button>
+            </form>
         </div>
         <div class="search_movie has-text-centered">
             <input class="input" type="text" placeholder="Inserisci nome film" v-model="movieSearch" @keyup.13="searchMovie_static">

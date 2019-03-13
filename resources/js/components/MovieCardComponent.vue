@@ -24,7 +24,7 @@
 
 <style lang="scss">
     .card {
-        background: lightblue;
+        background: rgb(192, 204, 206);
         margin: 10px;
         width: 200px;
     }

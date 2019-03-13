@@ -9,6 +9,8 @@ Vue.component('movie-card', require('./components/MovieCardComponent.vue').defau
 const app = new Vue({
     el: '#app',
     data: {
+        text: 'Tutti i film',
+        classes: [],
         newTitle: '',
         newYear: '',
         newContent: '',
@@ -28,6 +30,11 @@ const app = new Vue({
 
     },
     methods: {
+        showMovies() {
+            this.selectedMovies = [];
+            this.classes = [];
+            this.text = 'Tutti i film';
+        },
         addMovie() {
             // alert('ok')
             var newMovie = {
@@ -37,6 +44,11 @@ const app = new Vue({
                 image: this.newImg,
             }
             this.movies.push(newMovie);
+
+
+            this.selectedMovies = [];
+            this.classes = [];
+
         },
         searchMovie() {
             const axios = require('axios');
@@ -67,7 +79,7 @@ const app = new Vue({
                 });
         },
         searchMovie_static() {
-
+            this.classes = ['nascosto'];
             this.selectedMovies = [];
             var query = this.movieSearch;
             var film = this.movies;
@@ -82,6 +94,8 @@ const app = new Vue({
                 }
             })
             console.log(selectedMovies);
+
+            this.text = 'Hai cercato: \"' + query + '\"';
 
             this.movieSearch = '';
         },

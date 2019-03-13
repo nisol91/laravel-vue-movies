@@ -6244,7 +6244,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".card {\n  background: lightblue;\n  margin: 10px;\n  width: 200px;\n}\n.movie_cont {\n  width: 250px;\n  height: 100%;\n}\n.movie_cont h3 {\n  border-bottom: 0.5px solid grey;\n  margin-bottom: 5px;\n}", ""]);
+exports.push([module.i, ".card {\n  background: #c0ccce;\n  margin: 10px;\n  width: 200px;\n}\n.movie_cont {\n  width: 250px;\n  height: 100%;\n}\n.movie_cont h3 {\n  border-bottom: 0.5px solid grey;\n  margin-bottom: 5px;\n}", ""]);
 
 // exports
 
@@ -49615,6 +49615,8 @@ Vue.component('movie-card', __webpack_require__(/*! ./components/MovieCardCompon
 var app = new Vue({
   el: '#app',
   data: {
+    text: 'Tutti i film',
+    classes: [],
     newTitle: '',
     newYear: '',
     newContent: '',
@@ -49655,6 +49657,11 @@ var app = new Vue({
   },
   mounted: function mounted() {},
   methods: {
+    showMovies: function showMovies() {
+      this.selectedMovies = [];
+      this.classes = [];
+      this.text = 'Tutti i film';
+    },
     addMovie: function addMovie() {
       // alert('ok')
       var newMovie = {
@@ -49664,6 +49671,8 @@ var app = new Vue({
         image: this.newImg
       };
       this.movies.push(newMovie);
+      this.selectedMovies = [];
+      this.classes = [];
     },
     searchMovie: function searchMovie() {
       var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // Make a request for a user with a given ID
@@ -49689,6 +49698,7 @@ var app = new Vue({
       });
     },
     searchMovie_static: function searchMovie_static() {
+      this.classes = ['nascosto'];
       this.selectedMovies = [];
       var query = this.movieSearch;
       var film = this.movies;
@@ -49700,6 +49710,7 @@ var app = new Vue({
         }
       });
       console.log(selectedMovies);
+      this.text = 'Hai cercato: \"' + query + '\"';
       this.movieSearch = '';
     }
   }

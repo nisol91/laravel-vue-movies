@@ -11,24 +11,26 @@
 </head>
 <body>
     <div id="app" class="container-fluid external_cont">
-        <div class="input_cont">
+        <div class="input_cont has-text-centered">
             <input class="input" type="text" placeholder="Inserisci titolo" v-model="newTitle">
             <input class="input" type="text" placeholder="Inserisci anni" v-model="newYear">
             <input class="input" type="text" placeholder="Inserisci riassunto" v-model="newContent">
             <input class="input" type="text" placeholder="Inserisci url immagine" v-model="newImg">
             <button class="button" type="submit" @click="addMovie">Add Movie</button>
         </div>
-        <div class="search_movie">
+        <div class="search_movie has-text-centered">
             <input class="input" type="text" placeholder="Inserisci nome film" v-model="movieSearch" @keyup.13="searchMovie_static">
             <button class="button" type="submit" @click="searchMovie_static">Search Movie</button>
 
             <button class="button" type="submit" @click="searchMovie">Chiamata a tmdb</button>
+            <button class="button" type="submit" @click="showMovies">Mostra tutti i film</button>
 
         </div>
 
-            {{-- <div class="container main">
-                <movie-card v-bind:movie="movie" v-for="movie in movies"></movie-card >
-            </div> --}}
+            <h2 id="title">@{{text}}</h2>
+            <div class="container main">
+                <movie-card v-bind:movie="movie" v-bind:class="classes" v-for="movie in movies"></movie-card >
+            </div>
 
             <div class="container main">
                 <movie-card v-bind:movie="movie" v-for="movie in selectedMovies"></movie-card >

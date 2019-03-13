@@ -8,6 +8,7 @@
 }
 
 .main {
+  border-radius: 2px;
   height: auto;
   width: 100%;
   background: lightgrey;
@@ -23,6 +24,23 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  padding: 10px;
+}
+
+.search_movie {
+  padding: 10px;
+}
+
+input {
+  margin: 5px !important;
+}
+
+.nascosto {
+  display: none;
+}
+
+#title {
+  margin: 20px;
 }
 
 /*!

@@ -49615,7 +49615,6 @@ Vue.component('movie-card', __webpack_require__(/*! ./components/MovieCardCompon
 var app = new Vue({
   el: '#app',
   data: {
-    movieSearch: '',
     newTitle: '',
     newYear: '',
     newContent: '',
@@ -49650,97 +49649,8 @@ var app = new Vue({
       year: '13990',
       content: 'abcd',
       img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Adw',
-      year: '1950',
-      content: 'vdg',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Avcc',
-      year: '1997',
-      content: 'gvv',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'A',
-      year: '1990',
-      content: 'abcd lore',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Ab',
-      year: '13990',
-      content: 'abcd',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Adw',
-      year: '1950',
-      content: 'vdg',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Avcc',
-      year: '1997',
-      content: 'gvv',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'A',
-      year: '1990',
-      content: 'abcd',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Ab',
-      year: '13990',
-      content: 'abcd',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Adw',
-      year: '1950',
-      content: 'vdg',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Avcc',
-      year: '1997',
-      content: 'gvv',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'A',
-      year: '1990',
-      content: 'abcd',
-      img: 'http'
-    }, {
-      title: 'Ab',
-      year: '13990',
-      content: 'Do ut officia enim Lorem do culpa occaecat officia incididunt irure velit id laboris do.',
-      img: 'http'
-    }, {
-      title: 'Adw',
-      year: '1950',
-      content: 'vdg',
-      img: 'http'
-    }, {
-      title: 'Avcc',
-      year: '1997',
-      content: 'gvv',
-      img: 'http'
-    }, {
-      title: 'A',
-      year: '1990',
-      content: 'abcd',
-      img: 'http'
-    }, {
-      title: 'Ab',
-      year: '13990',
-      content: 'abcd',
-      img: 'http'
-    }, {
-      title: 'Adw',
-      year: '1950',
-      content: 'vdg',
-      img: 'http'
-    }, {
-      title: 'Avcc',
-      year: '1997',
-      content: 'gvv',
-      img: 'http'
     }],
+    movieSearch: '',
     selectedMovies: []
   },
   mounted: function mounted() {},
@@ -49771,15 +49681,18 @@ var app = new Vue({
       });
     },
     searchMovie_static: function searchMovie_static() {
+      this.selectedMovies = [];
       var query = this.movieSearch;
-      var selected = movies.filter(function (number) {
-        return number.includes(query);
+      var film = this.movies;
+      var selectedMovies = this.selectedMovies;
+      film.forEach(function (element) {
+        if (element.title.includes(query)) {
+          console.log(element.title);
+          selectedMovies.push(element);
+        }
       });
-      console.log(selected); // for (let i = 0; i < array.length; i++) {
-      //     const element = array[i];
-      //     if (.includes(query)) {
-      //     }
-      // }
+      console.log(selectedMovies);
+      this.movieSearch = '';
     }
   }
 });

@@ -21,6 +21,9 @@
         <div class="search_movie">
             <input class="input" type="text" placeholder="Inserisci nome film" v-model="movieSearch" @keyup.13="searchMovie_static">
             <button class="button" type="submit" @click="searchMovie_static">Search Movie</button>
+
+            <button class="button" type="submit" @click="searchMovie">Chiamata a tmdb</button>
+
         </div>
 
             {{-- <div class="container main">
@@ -31,7 +34,6 @@
                 <movie-card v-bind:movie="movie" v-for="movie in selectedMovies"></movie-card >
             </div>
     </div>
-    <script type="text/javascript" src="{{ asset('js/tmdb.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

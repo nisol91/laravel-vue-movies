@@ -41,11 +41,20 @@ const app = new Vue({
         searchMovie() {
             const axios = require('axios');
 
+
             // Make a request for a user with a given ID
             axios.get('https://api.themoviedb.org/3/movie/550', {
                 params: {
                     api_key: 'e1cd6fed3cf1a6213a3fd2941b25d0fc',
-                }
+                },
+                proxy: {
+                    host: '127.0.0.1',
+                    port: 8000,
+                },
+                transformRequest: [(data, headers) => {
+                    delete headers.common.Authorization
+                    return data
+                }]
             })
                 .then(function (response) {
                     console.log(response);

@@ -10,3 +10,8 @@ Il giro logico e': ho un array di dati nella mia `app` vue. Faccio diventare il 
 
 serve anche per stare in ascolto di un determinato attributo,es:
 `<img v-bind:src="movie.img" alt="">`
+
+
+-----------
+
+

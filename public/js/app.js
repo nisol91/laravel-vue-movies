@@ -49686,7 +49686,10 @@ var app = new Vue({
         var collection = response.data.results;
         collection.forEach(function (element) {
           films.push(element);
-        });
+        }); //IMPORTANTE: cosa ho fatto qui? ho pushato dentro a films ogni elemento dell array risultato della chiamata a tmdb.
+        //ma la cosa piu importante e': films lo avevo definito FUORI dalla chiamata, se no non sa cosa e', non sa che e' this.movies, e quindi non
+        //riesce a modificarlo nei data: .Quindi, definendolo all inizio del metodo, lui sa che films e' il this.movies dei data, e quindi lo modifica
+        //pushandoci dentro tutti gli elementi della chiamata.
       });
     },
     searchMovie_static: function searchMovie_static() {

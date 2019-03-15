@@ -2,11 +2,13 @@
         <div class="movie_cont">
             <div class="card">
                 <div class="card-header">
-                    {{movie.title}}
+                    {{ movie.title }}
                 </div>
                 <div class="card-body">
                     <h3>Anno: {{movie.year}}</h3>
                     <h4>Riassunto: {{movie.content}}</h4>
+                    <h4>{{movie.popularity}}</h4>
+                    <h4>{{movie.overview}}</h4>
                     <img v-bind:src="movie.img" alt="">
                 </div>
             </div>

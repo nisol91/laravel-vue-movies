@@ -34,7 +34,7 @@
             <input class="input" type="text" placeholder="Inserisci nome film" v-model="movieSearch" @keyup.13="searchMovie_static">
             <button class="button" type="submit" @click="searchMovie_static">Search Movie</button>
 
-            <button class="button" type="submit" @click="searchMovie">Chiamata a tmdb</button>
+            <button class="button" type="submit" @click="searchMovie">Cerca in tmdb</button>
             <button class="button" type="submit" @click="showMovies">Mostra tutti i film</button>
 
         </div>

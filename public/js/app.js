@@ -1778,6 +1778,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['movie'],
   mounted: function mounted() {
@@ -37485,6 +37487,10 @@ var render = function() {
         _vm._v(" "),
         _c("h4", [_vm._v("Riassunto: " + _vm._s(_vm.movie.content))]),
         _vm._v(" "),
+        _c("h4", [_vm._v(_vm._s(_vm.movie.popularity))]),
+        _vm._v(" "),
+        _c("h4", [_vm._v(_vm._s(_vm.movie.overview))]),
+        _vm._v(" "),
         _c("img", { attrs: { src: _vm.movie.img, alt: "" } })
       ])
     ])
@@ -49622,37 +49628,15 @@ var app = new Vue({
     newYear: null,
     newContent: null,
     newImg: null,
-    movies: [{
-      title: 'Le Iene',
-      year: '1990',
-      content: 'abcd',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Pulp Fiction',
-      year: '13990',
-      content: 'abcd',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Itchi the Killer',
-      year: '1950',
-      content: 'vdg',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Dal tramonto all\'Alba',
-      year: '1997',
-      content: 'gvv',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'Bad Taste',
-      year: '1990',
-      content: 'abcd',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }, {
-      title: 'L\'aldila\'',
-      year: '13990',
-      content: 'abcd',
-      img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg'
-    }],
+    movies: [],
+    // movies: [
+    //     { title: 'Le Iene', year: '1990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+    //     { title: 'Pulp Fiction', year: '13990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+    //     { title: 'Itchi the Killer', year: '1950', content: 'vdg', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+    //     { title: 'Dal tramonto all\'Alba', year: '1997', content: 'gvv', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+    //     { title: 'Bad Taste', year: '1990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+    //     { title: 'L\'aldila\'', year: '13990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+    // ],
     movieSearch: '',
     selectedMovies: []
   },
@@ -49676,26 +49660,33 @@ var app = new Vue({
       alert('movie added');
     },
     searchMovie: function searchMovie() {
-      var axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); // Make a request for a user with a given ID
+      this.movies = [];
+      var instance = axios.create();
+      var films = this.movies; //fixa un problema di tmdb
+      // va a resettare i common headers che di default hanno un header che non piace a tmdb
 
-
-      axios.get('https://api.themoviedb.org/3/movie/550', {
+      instance.defaults.headers.common = {
+        'Accept': 'application/json, text/plain, */*'
+      };
+      instance.get('https://api.themoviedb.org/3/search/movie', {
+        headers: {
+          'Content-Type': null
+        },
         params: {
-          api_key: 'e1cd6fed3cf1a6213a3fd2941b25d0fc'
-        },
-        proxy: {
-          host: '127.0.0.1',
-          port: 8000
-        },
-        transformRequest: [function (data, headers) {
-          delete headers.common.Authorization;
-          return data;
-        }]
-      }).then(function (response) {
-        console.log(response);
+          api_key: 'e1cd6fed3cf1a6213a3fd2941b25d0fc',
+          query: this.movieSearch
+        }
       }).catch(function (error) {
+        // handle error
+        console.log('here');
         console.log(error);
-      }).then(function () {// always executed
+      }).then(function (response) {
+        console.log('response');
+        console.log(response.data.results);
+        var collection = response.data.results;
+        collection.forEach(function (element) {
+          films.push(element);
+        });
       });
     },
     searchMovie_static: function searchMovie_static() {

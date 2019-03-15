@@ -16,16 +16,17 @@ const app = new Vue({
         newYear: null,
         newContent: null,
         newImg: null,
-        movies: [
-            { title: 'Le Iene', year: '1990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
-            { title: 'Pulp Fiction', year: '13990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
-            { title: 'Itchi the Killer', year: '1950', content: 'vdg', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
-            { title: 'Dal tramonto all\'Alba', year: '1997', content: 'gvv', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
-            { title: 'Bad Taste', year: '1990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
-            { title: 'L\'aldila\'', year: '13990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
-        ],
+        movies: [],
+        // movies: [
+        //     { title: 'Le Iene', year: '1990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+        //     { title: 'Pulp Fiction', year: '13990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+        //     { title: 'Itchi the Killer', year: '1950', content: 'vdg', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+        //     { title: 'Dal tramonto all\'Alba', year: '1997', content: 'gvv', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+        //     { title: 'Bad Taste', year: '1990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+        //     { title: 'L\'aldila\'', year: '13990', content: 'abcd', img: 'https://images-na.ssl-images-amazon.com/images/I/51xiT0l57mL._SY445_.jpg' },
+        // ],
         movieSearch: '',
-        selectedMovies: []
+        selectedMovies: [],
     },
     mounted() {
 
@@ -52,32 +53,39 @@ const app = new Vue({
 
         },
         searchMovie() {
-            const axios = require('axios');
+            this.movies = [];
+            const instance = axios.create();
+            var films = this.movies
 
+            //fixa un problema di tmdb
+            // va a resettare i common headers che di default hanno un header che non piace a tmdb
+            instance.defaults.headers.common = {
+                'Accept': 'application/json, text/plain, */*'
+            };
 
-            // Make a request for a user with a given ID
-            axios.get('https://api.themoviedb.org/3/movie/550', {
+            instance.get('https://api.themoviedb.org/3/search/movie', {
+                headers: {
+                    'Content-Type': null
+                },
                 params: {
                     api_key: 'e1cd6fed3cf1a6213a3fd2941b25d0fc',
+                    query: this.movieSearch,
                 },
-                proxy: {
-                    host: '127.0.0.1',
-                    port: 8000,
-                },
-                transformRequest: [(data, headers) => {
-                    delete headers.common.Authorization
-                    return data
-                }]
             })
-                .then(function (response) {
-                    console.log(response);
-                })
                 .catch(function (error) {
+                    // handle error
+                    console.log('here');
                     console.log(error);
                 })
-                .then(function () {
-                    // always executed
-                });
+                .then(function (response) {
+                    console.log('response');
+                    console.log(response.data.results);
+                    var collection = response.data.results;
+
+                    collection.forEach(function (element) {
+                            films.push(element);
+                    })
+                })
         },
         searchMovie_static() {
             this.classes = ['nascosto'];
